@@ -6,7 +6,7 @@ MEMORY_THRESHOLD = 80
 DISK_THRESHOLD = 80
 
 def check_cpu_usage():
-    cpu_percent = psutil.cpu_percent(interval=5)
+    cpu_percent = psutil.cpu_percent(interval=1)
     if cpu_percent > CPU_THRESHOLD:
         print(f"High CPU usage detected: {cpu_percent}%")
 
@@ -31,7 +31,7 @@ def check_running_processes():
                 print(f"High resource usage detected for process {process_info['name']}: CPU {process_info['cpu_percent']}%, Memory {process_info['memory_percent']}%")
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             pass
-
+        
 def main():
     print("Monitoring system health...")
     while True:
